@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "vazir";
+    src: url("../fonts/Vazir.woff") ;
+}
+
+:root{
+    --text-dark-mode : #ffffff ;
+    --bg-dark-mode : #3c3c3c ;
+    --compo-dark-mode : #797979 ;
+}
+
+#root,html{
+    height: 100vh !important;
+}
+body , .app {
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    height: auto !important;
+    min-height: 100vh !important;
+    width: 100%;
+    height: auto;
+}
+
+.app{
+    background: #dce5fa;
+}
+.app.darkMode {
+    background-color: var(--bg-dark-mode);
+}
+
+
+*{
+    font-family: vazir;
+    direction: rtl;
+    text-align: right;
+}
+
+
+
+/* --------------====== navbar ======------------------*/
+.navbar{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+    height: 60px;
+    border-radius: 15px;
+}
+.app.darkMode .navbar{
+    background: var(--compo-dark-mode) !important;
+    color: var(--text-dark-mode) !important;
+}
+
+.darkMode_input{
+    box-shadow: none !important;
+}
+
+/* --------------====== content ======------------------*/
+.content{
+    width: calc(100% - 300px);
+    height: fit-content;
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+    position: relative;
+}
+.app.darkMode .content{
+    background: var(--compo-dark-mode) !important;
+    color: var(--text-dark-mode) !important;
+}
+@media screen and (max-width:992px) {
+    .content{
+    width: 100%;
+    }
+}
+
+
+
+/* --------------====== sidebar ======------------------*/
+.sidebar{
+    width:  300px;
+    height: 40vh;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.341);
+    border-radius: 15px;
+    position: relative;
+}
+.app.darkMode .sidebar{
+    background: var(--compo-dark-mode) !important;
+    color: var(--text-dark-mode) !important;
+}
+
+.sidebar-list{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0 ;
+}
+
+.nav-li{
+    width: 85% !important;
+    height: 35px;
+    position: relative;
+}
+
+#navLink{
+    width: 100% !important;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all .2s ease-in;
+}
+/* -----------------======style for dark mode in sidebar=======------------*/
+.Nav-active{
+    background: #00000025;
+    border-color: #3c3c3c !important;
+}
+.app.darkMode .Nav-active{
+    border-color: #3c3c3c !important;
+}
+.not_active:hover{
+    background-color: #6b97ffed !important;
+}
+.app.darkMode .not_active{
+    background: #3c3c3c !important;
+    color: var(--text-dark-mode) !important;
+    border-color: #ffffff !important;
+
+}
+.app.darkMode .not_active:hover{
+    background-color: #80a6ffdc !important;
+}
+
+.nav-li a{
+    text-decoration: none !important; 
+    width: 100% !important;
+}
+
+
+/* -----------------======Users=======------------*/
+.app.darkMode .tableUser{
+    color: #ffffff !important;
+    height: fit-content !important;
+
+}
+
