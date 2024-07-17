@@ -5,6 +5,7 @@ const initialState ={
     loading : false ,
     isFetching : false,
     users : [],
+    userSearch : [],
     error : ''
 }
 
@@ -32,6 +33,7 @@ const userSlice = createSlice({
             state.loading = false;
             state.isFetching = false;
             state.users = action.payload;
+            state.userSearch = action.payload;
         });
         builder.addCase(getUsers.rejected , (state , action)=>{
             state.loading = false;
@@ -39,8 +41,14 @@ const userSlice = createSlice({
             state.users = [];
             state.error = action.error.message;
         });
+    },
+    reducers : {
+        setSearch : (state , action)=>{
+            state.users = state.userSearch.filter((t)=>t.name.toLowerCase().includes(action.payload))
+        }
     }
 })
 
 
 export default userSlice.reducer;
+export const {setSearch} = userSlice.actions;

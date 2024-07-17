@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsers } from '../../redux/users/usersSlice';
+import { getUsers, setSearch } from '../../redux/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
@@ -17,11 +17,16 @@ const Users = () => {
     },[])
 
 
+    const handleSearch = (e)=>{
+        dispatch(setSearch(e.target.value))
+    }
+
+
     return (
         <div className='w-100 '>
             <div className='content_header w-100 d-flex justify-content-between mb-3 mt-1'>
             <div className="form-group col-10 col-md-6 col-lg-4">
-                    <input type="text" className="form-control pt-2 shadow" placeholder="جستجو"/>
+                    <input type="text" onChange={handleSearch} className="form-control pt-2 shadow" placeholder="جستجو"/>
                 </div>
                 <button onClick={()=>navigate('/Users/add')} className="btn btn-primary fs-4 d-flex align-items-center pt-2" style={{height:40}}>+</button>
             </div>
