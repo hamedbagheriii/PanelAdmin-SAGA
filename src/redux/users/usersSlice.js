@@ -43,7 +43,7 @@ const userSlice = createSlice({
         });
     },
     reducers : {
-        setSearch : (state , action)=>{
+        setUsersSearch : (state , action)=>{
             state.users = state.userSearch.filter((t)=>t.name.toLowerCase().includes(action.payload))
         }
     }
@@ -51,4 +51,4 @@ const userSlice = createSlice({
 
 
 export default userSlice.reducer;
-export const {setSearch} = userSlice.actions;
+export const {setUsersSearch} = userSlice.actions;

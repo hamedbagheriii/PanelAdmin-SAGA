@@ -6,6 +6,7 @@ const initialState = {
     loading :false,
     isFetching : false,
     posts : [],
+    postSearch : [],
     error : ''
 }
 
@@ -32,6 +33,7 @@ const postsSlice = createSlice({
 
         builder.addCase(getPosts.fulfilled , (state , action)=>{
             state.posts = action.payload;
+            state.postSearch = action.payload;
             state.isFetching = false;
             state.loading = false;
         })
@@ -42,7 +44,13 @@ const postsSlice = createSlice({
             state.isFetching = false;
             state.loading = false;
         })
+    },
+    reducers : {
+        setPostSearch : (state , action)=>{
+            state.posts = state.postSearch.filter((t)=>t.title.toLowerCase().includes(action.payload))
+        }
     }
 })
 
 export default postsSlice.reducer;
+export const {setPostSearch} = postsSlice.actions;

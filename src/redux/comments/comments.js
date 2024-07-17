@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { combineSlices, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 
@@ -6,6 +6,7 @@ const initialState = {
     loading : false ,
     isFetching : false ,
     comments : [],
+    commentsSearch : [],
     error : ''
 }
 
@@ -32,6 +33,7 @@ const CommentsSlice = createSlice({
 
         builder.addCase(getComments.fulfilled , (state , action)=>{
             state.comments = action.payload;
+            state.commentsSearch = action.payload;
             state.isFetching = false;
             state.loading = false;
         })
@@ -42,9 +44,15 @@ const CommentsSlice = createSlice({
             state.isFetching = false;
             state.loading = false;
         })
+    },
+    reducers : {
+        setCommentsSearch : (state , action)=>{
+            state.comments = state.commentsSearch.filter((t)=>t.name.toLowerCase().includes(action.payload))
+        }
     }
 })
 
 
 
 export default CommentsSlice.reducer;
+export const {setCommentsSearch} = CommentsSlice.actions;

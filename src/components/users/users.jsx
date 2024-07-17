@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsers, setSearch } from '../../redux/users/usersSlice';
+import { getUsers, setSearch, setUsersSearch } from '../../redux/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
@@ -18,7 +18,7 @@ const Users = () => {
 
 
     const handleSearch = (e)=>{
-        dispatch(setSearch(e.target.value))
+        dispatch(setUsersSearch(e.target.value))
     }
 
 

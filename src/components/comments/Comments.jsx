@@ -1,22 +1,34 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments } from '../../redux/comments/comments';
+import { getComments, setCommentsSearch } from '../../redux/comments/comments';
+import { useNavigate } from 'react-router-dom';
 
 const Comments = () => {
 
     const {comments , error , isFetching ,  loading} = useSelector(state => state.comments)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         dispatch(getComments())
     },[])
 
 
+    const handleSearch = (e)=>{
+        dispatch(setCommentsSearch(e.target.value))
+    }
 
 
     return (
         <div className='w-100 '>
+            <div className='content_header w-100 d-flex justify-content-between mb-3 mt-1'>
+            <div className="form-group col-10 col-md-6 col-lg-4">
+                    <input type="text" onChange={handleSearch} className="form-control pt-2 shadow" placeholder="جستجو"/>
+                </div>
+                <button onClick={()=>navigate('/Comments/add')} className="btn btn-primary fs-4 d-flex align-items-center pt-2" style={{height:40}}>+</button>
+            </div>
+
             {comments.length ?
                 <div className='table-responsive-lg w-100'>
                     <table className="table tableUser ">

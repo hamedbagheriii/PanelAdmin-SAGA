@@ -5,6 +5,7 @@ const initialState = {
     loading : false ,
     isFetching : false ,
     gallery : [],
+    gallerySearch : [],
     error : ''
 }
 
@@ -31,6 +32,7 @@ const gallerySlice = createSlice({
 
         builder.addCase(getGallery.fulfilled , (state , action)=>{
             state.gallery = action.payload;
+            state.gallerySearch = action.payload;
             state.isFetching = false;
             state.loading = false;
         })
@@ -41,7 +43,13 @@ const gallerySlice = createSlice({
             state.isFetching = false;
             state.loading = false;
         })
+    },
+    reducers : {
+        setGallerySearch : (state , action)=>{
+            state.gallery = state.gallerySearch.filter((t)=>t.title.toLowerCase().includes(action.payload))
+        }
     }
 })
 
 export default gallerySlice.reducer;
+export const {setGallerySearch} = gallerySlice.actions;

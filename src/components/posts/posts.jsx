@@ -1,21 +1,34 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../../redux/posts/postsSlice';
+import { getPosts, setPostSearch } from '../../redux/posts/postsSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Posts = () => {
 
     const {posts , error , isFetching , loading} = useSelector(state => state.posts)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
         dispatch(getPosts())
     }, []);
 
+    const handleSearch = (e)=>{
+        dispatch(setPostSearch(e.target.value))
+    }
+
 
     return (
         <div className='w-100 '>
+            <div className='content_header w-100 d-flex justify-content-between mb-3 mt-1'>
+            <div className="form-group col-10 col-md-6 col-lg-4">
+                    <input type="text" onChange={handleSearch} className="form-control pt-2 shadow" placeholder="جستجو"/>
+                </div>
+                <button onClick={()=>navigate('/Posts/add')} className="btn btn-primary fs-4 d-flex align-items-center pt-2" style={{height:40}}>+</button>
+            </div>
+
             {posts.length ?
                 <div className='table-responsive-lg '>
                     <table className="table tableUser">
