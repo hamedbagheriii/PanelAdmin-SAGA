@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from '../../redux/users/usersSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Users = () => {
 
 
     const {users  , error , isFetching} = useSelector(state => state.users)
     
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -17,6 +19,13 @@ const Users = () => {
 
     return (
         <div className='w-100 '>
+            <div className='content_header w-100 d-flex justify-content-between mb-3 mt-1'>
+            <div className="form-group col-10 col-md-6 col-lg-4">
+                    <input type="text" className="form-control pt-2 shadow" placeholder="جستجو"/>
+                </div>
+                <button onClick={()=>navigate('/Users/add')} className="btn btn-primary fs-4 d-flex align-items-center pt-2" style={{height:40}}>+</button>
+            </div>
+
             {users.length ?
                 <div className='table-responsive-lg '>
                     <table className="table tableUser ">
@@ -26,6 +35,7 @@ const Users = () => {
                             <th scope="col">نام کاربری</th>
                             <th scope="col">ایمیل</th>
                             <th scope="col">آدرس</th>
+                            <th scope="col">عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,6 +45,13 @@ const Users = () => {
                                     <td>{u.name}</td>
                                     <td>{u.email}</td>
                                     <td>{u.address.city}</td>
+                                    <td>
+                                        <i className="fas fa-edit text-warning mx-2 pointer" 
+                                        onClick={()=>{
+                                            return navigate(`/Users/add/${u.id}`)
+                                        }}></i>
+                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

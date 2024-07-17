@@ -143,3 +143,29 @@ body , .app {
 
 }
 
+/* -----------------======Add Users=======------------*/
+
+.userForm{
+    width: 90% !important;
+    max-width: 700px;
+    height: fit-content;
+    border-radius: 15px;
+    background: transparent !important;
+}
+
+.app.darkMode .form_main{
+    background: #3c3c3c !important;
+}
+
+.userForm_title{
+    width: 40% !important; 
+    border-radius: 9px;
+}
+
+.inputUser::placeholder{
+    font-size: 14px;
+}
+
+.pointer{
+    cursor: pointer !important;
+}

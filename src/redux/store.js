@@ -15,8 +15,7 @@ const store = configureStore({
         users : usersReducer,
         posts : postsReducer,
         comments : commentsReducer,
-        gallery : galleryReducer
-
+        gallery : galleryReducer,
     }
 })
 
