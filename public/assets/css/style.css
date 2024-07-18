@@ -36,7 +36,10 @@ body , .app {
     text-align: right;
 }
 
-
+.fit-content{
+    min-height: 120px !important;
+    height: auto !important;
+}
 
 /* --------------====== navbar ======------------------*/
 .navbar{

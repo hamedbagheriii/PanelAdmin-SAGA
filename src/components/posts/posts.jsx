@@ -38,6 +38,7 @@ const Posts = () => {
                             <th className='w-25' scope="col">آیدی کاربر</th>
                             <th className='w-25' scope="col">عنوان</th>
                             <th className='w-75' scope="col">متن</th>
+                            <th className='' scope="عملیات">متن</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,13 @@ const Posts = () => {
                                     <td>{u.userId}</td>
                                     <td>{u.title}</td>
                                     <td>{u.body}</td>
+                                    <td>
+                                        <i className="fas fa-edit text-warning mx-2 pointer" 
+                                        onClick={()=>{
+                                            return navigate(`/Posts/add/${u.userId}/${u.id}`)
+                                        }}></i>
+                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

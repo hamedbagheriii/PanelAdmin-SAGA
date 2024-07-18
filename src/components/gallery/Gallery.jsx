@@ -36,6 +36,7 @@ const Gallery = () => {
                             <th className='w-25' scope="col">#</th>
                             <th className='w-50' scope="col">عنوان</th>
                             <th className='w-25' scope="col">عکس</th>
+                            <th className='' scope="col">عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,13 @@ const Gallery = () => {
                                     <th scope="row">{u.id}</th>
                                     <td>{u.title}</td>
                                     <td><img src={u.url} className='w-50' /></td>
+                                    <td>
+                                        <i className="fas fa-edit text-warning mx-2 pointer" 
+                                        onClick={()=>{
+                                            return navigate(`/Gallery/add/${u.id}`)
+                                        }}></i>
+                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
