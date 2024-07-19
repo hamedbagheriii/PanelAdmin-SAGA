@@ -13,9 +13,6 @@ const darkmodeSlice = createSlice({
         },
         setLightMode : (state)=>{
             state.theme = 'light'
-        },
-        setTheme : (state , action)=>{
-            state.theme = action.payload
         }
     }
 })

@@ -10,7 +10,7 @@ const initialState ={
 
 
 
-const userReducer = (state = initialState , action)=>{
+const usersReducer = (state = initialState , action)=>{
     switch (action.type) {
         // get users =>
         case SEND_REQUEST_USERS:
@@ -51,4 +51,4 @@ const userReducer = (state = initialState , action)=>{
 }
 
 
-export default userReducer;
+export default usersReducer;

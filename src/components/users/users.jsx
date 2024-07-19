@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { deleteUser, getUsers, setSearch, setUsersSearch } from '../../redux/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
 import { handleDeleteUser } from '../../service/userService/userSevice';
 import { getSearchResponse, sendRequestDeleteUsers, sendRequestUsers } from '../../redux/users/usersAction';

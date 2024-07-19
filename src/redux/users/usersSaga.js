@@ -1,9 +1,7 @@
 import axios from "axios"
 import { call, put, takeEvery } from "redux-saga/effects"
 import { SEND_REQUEST_DELETE_USERS, SEND_REQUEST_USERS } from "./usersType"
-import { ErrorDeleteUsers, GetDeleteUsers, getRequestError, getRequestResponse, sendRequestDeleteUsers } from "./usersAction"
-import { getSearchError, getSearchResponse } from "./usersAction";
-import { GET_SEARCH, GET_SEARCH_RESPONSE } from "./usersType";
+import { ErrorDeleteUsers, GetDeleteUsers, getRequestError, getRequestResponse } from "./usersAction"
 
 const getData = ()=>{
     return axios.get('https://jsonplaceholder.typicode.com/users')

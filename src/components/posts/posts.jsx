@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts, setPostSearch } from '../../redux/posts/postsSlice';
 import { useNavigate } from 'react-router-dom';
+import { sendRequestDeletePosts, sendRequestPosts } from '../../redux/posts/postsAction';
+import { getSearchResponse } from '../../redux/users/usersAction';
 
 const Posts = () => {
 
@@ -12,11 +13,17 @@ const Posts = () => {
 
 
     useEffect(() => {
-        dispatch(getPosts())
+        dispatch(sendRequestPosts())
     }, []);
 
+    
     const handleSearch = (e)=>{
-        dispatch(setPostSearch(e.target.value))
+        dispatch(getSearchResponse(e.target.value))
+    }
+
+    
+    const handleDelete = (u)=>{
+        dispatch(sendRequestDeletePosts(u.id));
     }
 
 
@@ -53,7 +60,7 @@ const Posts = () => {
                                         onClick={()=>{
                                             return navigate(`/Posts/add/${u.userId}/${u.id}`)
                                         }}></i>
-                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                        <i onClick={()=>handleDelete(u)} className="fas fa-trash text-danger mx-2 pointer"></i>
                                     </td>
                                 </tr>
                             ))}
