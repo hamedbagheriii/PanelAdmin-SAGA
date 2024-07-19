@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleDeleteUser } from '../../service/userService/userSevice';
 import { getSearchResponse, sendRequestDeleteUsers, sendRequestUsers } from '../../redux/users/usersAction';
+import swal from 'sweetalert';
 
 const Users = () => {
 
@@ -24,8 +25,24 @@ const Users = () => {
 
 
     const handleDelete = (u)=>{
-        dispatch(sendRequestDeleteUsers(u.id));
+        swal({
+            title: "حذف کاربر !",
+            text: `آیا از حذف آیتم ${u.id} اطمینان دارید ؟`,
+            icon: "warning",
+            buttons: ['لغو' , 'تایید'],
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                dispatch(sendRequestDeleteUsers(u.id));
+            }
+            else {
+              swal("عملیات لغو شد .");
+            }
+        });
     }
+
+
 
 
     return (

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchResponse, sendRequestDeletegallery, sendRequestgallery } from '../../redux/gallery/galleryAction';
+import swal from 'sweetalert';
 
 const Gallery = () => {
     const {gallery , error , isFetching ,  loading} = useSelector(state => state.gallery)
@@ -19,8 +20,23 @@ const Gallery = () => {
     }
 
 
+
     const handleDelete = (u)=>{
-        dispatch(sendRequestDeletegallery(u.id));
+        swal({
+            title: "حذف کاربر !",
+            text: `آیا از حذف آیتم ${u.id} اطمینان دارید ؟`,
+            icon: "warning",
+            buttons: ['لغو' , 'تایید'],
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                dispatch(sendRequestDeletegallery(u.id));
+            }
+            else {
+              swal("عملیات لغو شد .");
+            }
+        });
     }
 
 

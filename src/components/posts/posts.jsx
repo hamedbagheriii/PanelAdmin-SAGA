@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSearchResponse, sendRequestDeletePosts, sendRequestPosts } from '../../redux/posts/postsAction';
+import swal from 'sweetalert';
 
 const Posts = () => {
 
@@ -22,7 +23,21 @@ const Posts = () => {
 
     
     const handleDelete = (u)=>{
-        dispatch(sendRequestDeletePosts(u.id));
+        swal({
+            title: "حذف کاربر !",
+            text: `آیا از حذف آیتم ${u.id} اطمینان دارید ؟`,
+            icon: "warning",
+            buttons: ['لغو' , 'تایید'],
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+                dispatch(sendRequestDeletePosts(u.id));
+            }
+            else {
+              swal("عملیات لغو شد .");
+            }
+        });
     }
 
 
