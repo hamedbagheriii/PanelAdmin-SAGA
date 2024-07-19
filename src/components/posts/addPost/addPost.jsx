@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { handleSetPost, handleUpdatePost } from '../../../service/postService/postSevice';
-import { getUsers } from '../../../redux/users/usersSlice';
+import { sendRequestUsers } from '../../../redux/users/usersAction';
 
 
 const AddPost = ()=>{
@@ -19,7 +19,7 @@ const AddPost = ()=>{
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getUsers())
+        dispatch(sendRequestUsers())
         if(userId){
             axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`).then(res =>{
                 setPostData(res.data)

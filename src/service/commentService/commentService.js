@@ -2,10 +2,10 @@ import axios from "axios"
 import swal from "sweetalert";
 
 
-export const handleSetUser = (data)=>{
-    axios.post('https://jsonplaceholder.typicode.com/users', data).then(res=>{
+export const handleSetComment = (data)=>{
+    axios.post('https://jsonplaceholder.typicode.com/comments', data).then(res=>{
         console.log(res);
-        swal(`کاربر ${data.username}  با موفقیت ایجاد شد .`,{
+        swal(`نظر  با موفقیت ایجاد شد .`,{
             icon : 'success',
             buttons : 'متوجه شدم'
         })
@@ -17,10 +17,10 @@ export const handleSetUser = (data)=>{
     })
 }
 
-export const handleUpdateUser = (data , userId)=>{
-    axios.put(`https://jsonplaceholder.typicode.com/users/${userId}`, data).then(res=>{
+export const handleUpdateComment = (data , id)=>{
+    axios.put(`https://jsonplaceholder.typicode.com/comments/${id}`, data).then(res=>{
         console.log(res);
-        swal(`کاربر ${data.username}  با موفقیت آپدیت شد .`,{
+        swal(`نظر  با موفقیت آپدیت شد .`,{
             icon : 'success',
             buttons : 'متوجه شدم'
         })
@@ -31,5 +31,3 @@ export const handleUpdateUser = (data , userId)=>{
         })
     })
 }
-
-

@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUsers, setSearch, setUsersSearch } from '../../redux/users/usersSlice';
+// import { deleteUser, getUsers, setSearch, setUsersSearch } from '../../redux/users/usersSlice';
 import { useNavigate } from 'react-router-dom';
+import { handleDeleteUser } from '../../service/userService/userSevice';
+import { getSearchResponse, sendRequestDeleteUsers, sendRequestUsers } from '../../redux/users/usersAction';
 
 const Users = () => {
 
@@ -13,12 +15,17 @@ const Users = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(getUsers())
+        dispatch(sendRequestUsers())
     },[])
 
 
     const handleSearch = (e)=>{
-        dispatch(setUsersSearch(e.target.value))
+        dispatch(getSearchResponse(e.target.value))
+    }
+
+
+    const handleDelete = (u)=>{
+        dispatch(sendRequestDeleteUsers(u.id));
     }
 
 
@@ -55,7 +62,7 @@ const Users = () => {
                                         onClick={()=>{
                                             return navigate(`/Users/add/${u.id}`)
                                         }}></i>
-                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                        <i onClick={()=>handleDelete(u)} className="fas fa-trash text-danger mx-2 pointer"></i>
                                     </td>
                                 </tr>
                             ))}

@@ -7,6 +7,7 @@ import Gallery from '../../components/gallery/Gallery';
 import AddUser from '../../components/users/addUsers/addUsers';
 import AddPost from '../../components/posts/addPost/addPost';
 import AddGallry from '../../components/gallery/addGallery/addGallery';
+import AddComment from '../../components/comments/addComment/addComment';
 
 const Content = () => {
     return (
@@ -25,6 +26,11 @@ const Content = () => {
                 </Route>
 
                 <Route path='/Comments' element={<Comments/>} />
+                <Route path='/Comments/add' element={<AddComment />} >
+                    <Route path=':postId'>
+                        <Route path=':id' />
+                    </Route>
+                </Route>
 
                 <Route path='/Posts' element={<Posts/>} />
                 <Route path='/Posts/add' element={<AddPost />} >

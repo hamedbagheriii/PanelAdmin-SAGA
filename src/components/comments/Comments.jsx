@@ -39,6 +39,7 @@ const Comments = () => {
                             <th className='' scope="col">عنوان</th>
                             <th className='' scope="col">ایمیل</th>
                             <th className='' scope="col">متن</th>
+                            <th className='' scope="col">عملیات</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,6 +50,13 @@ const Comments = () => {
                                     <td>{u.name}</td>
                                     <td>{u.email}</td>
                                     <td>{u.body}</td>
+                                    <td>
+                                        <i className="fas fa-edit text-warning mx-2 pointer" 
+                                        onClick={()=>{
+                                            return navigate(`/Comments/add/${u.postId}/${u.id}`)
+                                        }}></i>
+                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
