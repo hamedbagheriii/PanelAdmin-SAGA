@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { sendRequestDeletePosts, sendRequestPosts } from '../../redux/posts/postsAction';
-import { getSearchResponse } from '../../redux/users/usersAction';
+import { getSearchResponse, sendRequestDeletePosts, sendRequestPosts } from '../../redux/posts/postsAction';
 
 const Posts = () => {
 

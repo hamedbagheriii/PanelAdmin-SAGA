@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { handleSetPost, handleUpdatePost } from '../../../service/postService/postSevice';
 import { handleSetGallery, handleUpdateGallery } from '../../../service/galleryService/galleryService';
 
 

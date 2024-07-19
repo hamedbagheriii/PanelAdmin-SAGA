@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getGallery, setGallerySearch } from '../../redux/gallery/gallerySlice';
 import { useNavigate } from 'react-router-dom';
+import { getSearchResponse, sendRequestDeletegallery, sendRequestgallery } from '../../redux/gallery/galleryAction';
 
 const Gallery = () => {
     const {gallery , error , isFetching ,  loading} = useSelector(state => state.gallery)
@@ -10,12 +10,17 @@ const Gallery = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        dispatch(getGallery())
+        dispatch(sendRequestgallery())
     },[])
 
 
     const handleSearch = (e)=>{
-        dispatch(setGallerySearch(e.target.value))
+        dispatch(getSearchResponse(e.target.value))
+    }
+
+
+    const handleDelete = (u)=>{
+        dispatch(sendRequestDeletegallery(u.id));
     }
 
 
@@ -50,7 +55,7 @@ const Gallery = () => {
                                         onClick={()=>{
                                             return navigate(`/Gallery/add/${u.id}`)
                                         }}></i>
-                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                        <i onClick={()=>handleDelete(u)} className="fas fa-trash text-danger mx-2 pointer"></i>
                                     </td>
                                 </tr>
                             ))}

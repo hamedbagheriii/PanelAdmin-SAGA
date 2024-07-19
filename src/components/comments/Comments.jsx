@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getComments, setCommentsSearch } from '../../redux/comments/comments';
 import { useNavigate } from 'react-router-dom';
+import { getSearchResponse, sendRequestComment, sendRequestDeleteComment } from '../../redux/comments/commentAction';
 
 const Comments = () => {
 
@@ -11,12 +11,17 @@ const Comments = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        dispatch(getComments())
+        dispatch(sendRequestComment())
     },[])
 
 
     const handleSearch = (e)=>{
-        dispatch(setCommentsSearch(e.target.value))
+        dispatch(getSearchResponse(e.target.value))
+    }
+
+
+    const handleDelete = (u)=>{
+        dispatch(sendRequestDeleteComment(u.id));
     }
 
 
@@ -55,7 +60,7 @@ const Comments = () => {
                                         onClick={()=>{
                                             return navigate(`/Comments/add/${u.postId}/${u.id}`)
                                         }}></i>
-                                        <i className="fas fa-trash text-danger mx-2 pointer"></i>
+                                        <i onClick={()=>handleDelete(u)} className="fas fa-trash text-danger mx-2 pointer"></i>
                                     </td>
                                 </tr>
                             ))}

@@ -32,7 +32,7 @@ const postsReducer = (state = initialState , action)=>{
 
         // search Posts =>
         case GET_PSOT_SEARCH_RESPONSE :
-            return {...state , posts : state.postsearch.filter((t)=>t.name.toLowerCase().includes(action.payLoad)) }
+            return {...state , posts : state.postsSearch.filter((t)=>t.title.toLowerCase().includes(action.payLoad))}
                     
         case GET_POST_SEARCH_ERROR :
             return {...state , posts : state.posts , error : action.payLoad}

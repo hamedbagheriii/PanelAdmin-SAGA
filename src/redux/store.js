@@ -1,13 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import darkmodeReducer from './theme/darkModeSlice'
-import commentsReducer from './comments/comments'
 import createSagaMiddleware from "@redux-saga/core";
-import galleryReducer from './gallery/gallerySlice'
 import usersReducer from "./users/usersReducer";
-import { usersSaga } from "./users/usersSaga";
-import { postsSaga } from "./posts/postsSaga";
 import postsReducer from "./posts/postsReducer";
 import rootSaga from "./sagaRoot";
+import galleryReducer from "./gallery/galleryReducer";
+import commentReducer from "./comments/commentReducer";
 
 
 // ! با استفاده از ریداکس از زدن رکوست دوباره جلوگیری میکنیم
@@ -18,7 +16,7 @@ const store = configureStore({
         darkmode: darkmodeReducer ,
         users : usersReducer,
         posts : postsReducer,
-        comments : commentsReducer,
+        comments : commentReducer,
         gallery : galleryReducer,
     },
     middleware : ()=>[sagaMiddleware]
